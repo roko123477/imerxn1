@@ -1,0 +1,75 @@
+
+<% layout('layouts/boilerplate')%>
+<div class="container d-flex justify-content-center align-items-center mt-5">
+    <div class="row">
+        <h1 class="text-center">New Partner</h1>
+        <div class="col-md-12 offset-md-2 col-xl-10 offset-xl-1">
+            
+    <form action="/<%=currentUser._id%>/admin/partner/new" method="post" novalidate class="validated-form" enctype="multipart/form-data">
+        <!--name-->
+        <div class="mb-3">
+            <label class="form-label" for="name">Name</label>
+            <input class="form-control" type="text" id="name" name="partner[name]" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <!--university-->
+        <div class="mb-3">
+            <label class="form-label" for="university">University</label>
+            <input class="form-control" type="text" id="university" name="partner[university]">
+            <div class="valid-feedback">
+                Looks good!
+              </div>
+        </div>
+
+   
+ 
+        <!--image-->
+     
+        <div class="mb-3">
+            <div class="custom-file">
+                <label for="">Upload Image of Partner</label>
+                <input type="file" class="form-control" id="image" name="image" multiple required>
+                <label class="form-label" for="image">
+                    <span class="form-text custom-file-label">Choose image...</span>
+                   
+                </label>
+            </div>
+        </div>
+       
+    
+        <!--profession-->
+     
+        <div class="mb-3">
+            <label class="form-label" for="founder">Founder</label>
+            <input class="form-control"  id="founder" name="partner[founder]" required>
+            <div class="valid-feedback">
+                Looks good!
+              </div>
+        </div>
+
+         
+     
+        <div class="btn-group" aria-label="First group">
+            <button class="btn btn-info">Add Partner</button>
+            
+        </div>
+        <div class="btn-group"  aria-label="Second group">
+            <a class="btn btn-success" href="/<%=currentUser._id%>/admin/partner">Back to Partner</a>
+        </div>
+    </form>
+    </div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
+integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
+<script type="text/javascript" src="/js/validateForm.js"></script>
+</body>
+</html>
+

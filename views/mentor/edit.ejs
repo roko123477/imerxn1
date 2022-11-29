@@ -1,0 +1,120 @@
+<% layout('layouts/boilerplate')%>
+
+<div class="container mb-3">
+    <div class="row mb-3">
+        <h1 class="text-center fw-lighter mb-4 text-muted text-decoration-underline">Edit your Mentor</h1>
+        <div class="col-md-6 offset-md-3">
+            <form action="/<%=currentUser._id%>/admin/mentor/<%=mentor._id%>/?_method=PUT" method="post" class="row my-3 validated-form" novalidate enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label" for="name">Name</label>
+                    <input class="form-control" type="text" id="name" name="academicmentor[name]" value="<%=mentor.name%>"required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <!--degree-->
+                <div class="mb-3">
+                    <label class="form-label" for="degree">Degree</label>
+                    <input class="form-control" type="text" id="degree" name="academicmentor[degree]" value="<%=mentor.degree%>">
+                    <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                </div>
+    
+                <!-- types of mentor -->
+                <div class="mb-3">
+                    <label class="form-label" for="type">Mentor Type</label>
+                    <select class="form-select form-control" aria-label="Default select example" id="type" name="academicmentor[type]" required>
+    
+                        <%if(mentor.type=='academic'){%> 
+                            <option value="academic" selected>Academic</option>
+                        <% }else{ %>
+                            <option value="academic">Academic</option>   
+                        <% } %> 
+    
+                        <%if(mentor.type=='industry'){%> 
+                            <option value="industry" selected>Industry</option>
+                        <% }else{ %>
+                            <option value="industry">Industry</option>   
+                        <% } %>
+    
+                        <%if(mentor.type=='peer'){%> 
+                            <option value="peer" selected>Peer</option>
+                        <% }else{ %>
+                            <option value="peer">Peer</option>   
+                        <% } %>
+                    </select>
+                    
+                    <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                </div>
+                <!--image-->
+             
+                <div class="mb-3">
+                    <div class="custom-file">
+                        <label for="">Upload Image of mentor</label>
+                        <input type="file" class="form-control" id="image" name="image" multiple>
+                        <label class="form-label" for="image">
+                            <span class="form-text custom-file-label">Choose image...</span>
+                           
+                        </label>
+                    </div>
+                </div>
+               
+            
+                <!--profession-->
+             
+                <div class="mb-3">
+                    <label class="form-label" for="profession">Profession</label>
+                    <input class="form-control" type="profession" id="profession" name="academicmentor[profession]" value="<%=mentor.profession%>"required>
+                    <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                </div>
+    
+                  <!--department-->
+             
+                  <div class="mb-3">
+                    <label class="form-label" for="department">Department</label>
+                    <input class="form-control" type="department" id="department" name="academicmentor[department]" value="<%=mentor.department%>"required>
+                    <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                </div>
+        <div class="mb-3">
+            <label for="">Select the image(s) you want to delete:</label>
+            <div class="delete-box">
+    
+                <% mentor.images.forEach( (img, i) => { %>
+                    <div class="delete-item form-check">
+                        <label for="image-<%= i %>" class="form-check-label">  
+                            <img src="<%= img.thumbnail %>" class="img-thumb" alt="<%= img.filename %>">
+                        </label>
+                        <input type="checkbox" class="form-check-input" name="deleteImages[]" 
+                            value="<%= img.filename %>" id="image-<%= i %>">                    
+                    </div>
+                <% }) %>
+    
+            </div>
+        </div>
+
+        <div class="btn-group" aria-label="First group">
+            <button class="btn btn-info">Update Mentor</button>
+            
+        </div>
+      
+        
+    </form>
+    <div class="btn-group"  aria-label="Second group">
+        <a class="btn btn-success" href="/<%=currentUser._id%>/admin/mentor">Back to mentor</a>
+    </div>
+    </div>
+    </div>
+    </div>
+
+
+    
+    
+
+</html>

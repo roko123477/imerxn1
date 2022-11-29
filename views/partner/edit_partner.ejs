@@ -1,0 +1,87 @@
+<% layout('layouts/boilerplate')%>
+
+<div class="container mb-3">
+    <div class="row mb-3">
+        <h1 class="text-center fw-lighter mb-4 text-muted text-decoration-underline">Edit your Partner</h1>
+        <div class="col-md-6 offset-md-3">
+            <form action="/<%=currentUser._id%>/admin/partner/<%=partner._id%>/?_method=PUT" method="post" class="row my-3 validated-form" novalidate enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label" for="name">Name</label>
+                    <input class="form-control" type="text" id="name" name="partner[name]" value="<%=partner.name%>"required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <!--degree-->
+                <div class="mb-3">
+                    <label class="form-label" for="university">University</label>
+                    <input class="form-control" type="text" id="university" name="partner[university]" value="<%=partner.university%>">
+                    <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                </div>
+    
+                
+                <!--image-->
+             
+                <div class="mb-3">
+                    <div class="custom-file">
+                        <label for="">Upload Image of mentor</label>
+                        <input type="file" class="form-control" id="image" name="image" multiple>
+                        <label class="form-label" for="image">
+                            <span class="form-text custom-file-label">Choose image...</span>
+                           
+                        </label>
+                    </div>
+                </div>
+               
+            
+                <!--founder-->
+             
+                <div class="mb-3">
+                    <label class="form-label" for="founder">Founder</label>
+                    <input class="form-control" id="founder" name="partner[founder]" value="<%=partner.founder%>"required>
+                    <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                </div>
+    
+                  <!--department-->
+             
+                  
+        <div class="mb-3">
+            <label for="">Select the image(s) you want to delete:</label>
+            <div class="delete-box">
+    
+                <% partner.images.forEach( (img, i) => { %>
+                    <div class="delete-item form-check">
+                        <label for="image-<%= i %>" class="form-check-label">  
+                            <img src="<%= img.thumbnail %>" class="img-thumb" alt="<%= img.filename %>">
+                        </label>
+                        <input type="checkbox" class="form-check-input" name="deleteImages[]" 
+                            value="<%= img.filename %>" id="image-<%= i %>">                    
+                    </div>
+                <% }) %>
+    
+            </div>
+        </div>
+
+        <div class="btn-group" aria-label="First group">
+            <button class="btn btn-info">Update Partner</button>
+            
+        </div>
+      
+        
+    </form>
+    <div class="btn-group"  aria-label="Second group">
+        <a class="btn btn-success" href="/<%=currentUser._id%>/admin/partner">Back to partner</a>
+    </div>
+    </div>
+    </div>
+    </div>
+
+
+    
+    
+
+</html>
